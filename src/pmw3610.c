@@ -585,7 +585,7 @@ static int pmw3610_report_data(const struct device *dev) {
         LOG_WRN("Device is not initialized yet");
         return -EBUSY;
     }
-if( x + y < 1)
+if( (x + y )< 1)
 {
     break;
 }
