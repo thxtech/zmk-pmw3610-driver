@@ -558,7 +558,7 @@ static void deactivate_automouse_layer(struct k_timer *timer) {
     zmk_keymap_layer_deactivate(AUTOMOUSE_LAYER);
 }
 
-K_TIMER_DEFINE(automouse_layer_timer, deactivate_automouse_layer, 100);
+K_TIMER_DEFINE(automouse_layer_timer, deactivate_automouse_layer, NULL);
 #endif
 
 static enum pixart_input_mode get_input_mode_for_current_layer(const struct device *dev) {
@@ -613,8 +613,8 @@ static int pmw3610_report_data(const struct device *dev) {
     data->curr_mode = input_mode;
 
 #if AUTOMOUSE_LAYER > 0
-    if (input_mode +1 == MOVE +1 &&
-            (automouse_triggered || x+y<20 ||zmk_keymap_highest_layer_active() != AUTOMOUSE_LAYER)
+    if (input_mode == MOVE &&
+            (automouse_triggered || (x + y ) < 20 || zmk_keymap_highest_layer_active() != AUTOMOUSE_LAYER)
     ) {
         activate_automouse_layer();
     }
