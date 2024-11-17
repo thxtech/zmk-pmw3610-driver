@@ -558,7 +558,7 @@ static void deactivate_automouse_layer(struct k_timer *timer) {
     zmk_keymap_layer_deactivate(AUTOMOUSE_LAYER);
 }
 
-K_TIMER_DEFINE(automouse_layer_timer, deactivate_automouse_layer, NULL);
+K_TIMER_DEFINE(automouse_layer_timer, deactivate_automouse_layer, 1);
 #endif
 
 static enum pixart_input_mode get_input_mode_for_current_layer(const struct device *dev) {
