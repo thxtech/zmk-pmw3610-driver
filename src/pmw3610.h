@@ -135,7 +135,7 @@ extern "C" {
 #define PMW3610_SCROLL_Y_POSITIVE 1
 #endif
 
-#define CONFIG_PMW3610_AUTOMOUSE_SE 0.6
+
 
 #ifdef __cplusplus
 }
