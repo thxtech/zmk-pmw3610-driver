@@ -542,7 +542,7 @@ static void pmw3610_async_init(struct k_work *work) {
     }
 }
 
-#define AUTOMOUSE_LAYER 1
+#define AUTOMOUSE_LAYER (DT_PROP(DT_DRV_INST(0), automouse_layer))
 #if (AUTOMOUSE_LAYER > 0)
     struct k_timer automouse_layer_timer;
     static bool automouse_triggered = false;
@@ -550,7 +550,7 @@ static void pmw3610_async_init(struct k_work *work) {
     static void activate_automouse_layer() {
         automouse_triggered = true;
         zmk_keymap_layer_activate(AUTOMOUSE_LAYER);
-        k_timer_start(&automouse_layer_timer, K_MSEC(100), K_NO_WAIT);
+        k_timer_start(&automouse_layer_timer, K_MSEC(4　00), K_NO_WAIT);
     }
 
     static void deactivate_automouse_layer(struct k_timer *timer) {
